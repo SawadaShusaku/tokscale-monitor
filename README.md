@@ -3,9 +3,19 @@
 > **⚠️ Early development / Work in progress**  
 > This project is actively being built and is not yet feature-complete. Some parsers are stubs, and the UI/UX will evolve.
 
-A desktop app (built with Tauri + SvelteKit) that monitors token usage and estimated costs across multiple AI coding assistants.
+An **unofficial** desktop dashboard for [tokscale](https://github.com/junhoyeo/tokscale) — a popular CLI tool for tracking token usage across AI coding assistants. This app adds a native GUI, system tray, per-provider toggles, and additional parsers on top of the original tokscale concept.
 
 ![Screenshot](docs/assets/screenshot.png)
+
+## What is Tokscale?
+
+**[Tokscale](https://github.com/junhoyeo/tokscale)** (by [@junhoyeo](https://github.com/junhoyeo)) is a CLI tool that tracks token usage and costs across multiple AI coding assistants. This app (`tokscale-monitor`) is an **independent, unofficial desktop companion** that provides:
+
+- **A native GUI** — No more terminal-only monitoring
+- **System tray integration** — Runs in the background
+- **Dynamic provider tabs** — Toggle which AI tools to monitor via settings
+- **Direct parsers** — Native parsers for Claude Code, Codex, Qwen, etc. that read local data files directly (no CLI required)
+- **Additional providers** — Qwen support added beyond the original tokscale scope
 
 ## Features
 
@@ -21,7 +31,7 @@ A desktop app (built with Tauri + SvelteKit) that monitors token usage and estim
 | OpenCode | ✅ Live | SQLite parser |
 | Claude Code | ✅ Live | JSONL parser with token-based cost estimation |
 | Codex | ✅ Live | JSONL parser with per-response cost tiers |
-| Qwen | ✅ Live | JSONL parser with real token usage |
+| Qwen | ✅ Live | JSONL parser with real token usage (added by this project) |
 | Cursor | 🚧 Stub | Config ready; parser awaits data format confirmation |
 | Windsurf | 🚧 Stub | Config ready; parser awaits data format confirmation |
 
@@ -42,6 +52,12 @@ File paths in parsers use `dirs::home_dir()`, so they resolve automatically on e
 ## Installation
 
 Download the latest release or build from source.
+
+### Prerequisites
+
+- **Node.js** (v20+)
+- **Rust** (for Tauri)
+- (Optional) **[tokscale CLI](https://github.com/junhoyeo/tokscale)** — The original CLI tool. Not required for this app to function.
 
 ### Build from source
 
@@ -97,6 +113,17 @@ npm install
 # Run in dev mode (starts Vite + Tauri)
 npm run tauri dev
 ```
+
+## Relationship to Original Tokscale
+
+This project is **not affiliated with** the original [junhoyeo/tokscale](https://github.com/junhoyeo/tokscale). It is an independent, community-driven GUI extension that:
+
+- Adds a native desktop interface
+- Implements direct file parsers for providers (no CLI dependency)
+- Adds new providers (e.g., Qwen) not in the original scope
+- Adds system tray and settings persistence
+
+If you use the original tokscale CLI, this app can complement it. If you don't, the native parsers work standalone.
 
 ## License
 

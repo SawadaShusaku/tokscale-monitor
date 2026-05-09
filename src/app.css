@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-smarthr-blue: #00c4cc;
+  --color-smarthr-product-main: #0077c7;
+  --color-smarthr-danger: #e01e5a;
+  --color-smarthr-warning: #ffcc17;
+  --color-smarthr-text-black: #23221e;
+  --color-smarthr-text-grey: #706d65;
+  --color-smarthr-text-disabled: #c1bdb7;
+  --color-smarthr-stone01: #f8f7f6;
+  --color-smarthr-stone02: #edebe8;
+  --color-smarthr-stone03: #aaa69f;
+  --color-smarthr-stone04: #4e4c49;
+  --color-smarthr-border: #d6d3d0;
+  --color-smarthr-over-background: #f2f1f0;
+}
+
+@font-face {
+  font-family: AdjustedYuGothic;
+  font-weight: 400;
+  src: local("Yu Gothic Medium");
+}
+
+@font-face {
+  font-family: AdjustedYuGothic;
+  font-weight: 700;
+  src: local("Yu Gothic Bold");
+}
+
+body {
+  font-family: AdjustedYuGothic, "Yu Gothic", YuGothic, "Hiragino Sans", sans-serif;
+  color: #23221e;
+  background-color: #f8f7f6;
+}

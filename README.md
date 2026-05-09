@@ -30,6 +30,14 @@ A desktop app (built with Tauri + SvelteKit) that monitors token usage and estim
 - **Frontend:** Svelte 5, Tailwind CSS, SmartHR Design System
 - **Backend:** Rust (Tauri), rusqlite
 - **Build:** Vite
+- **Platforms:** macOS, Windows, Linux
+
+## Platform Notes
+
+The app builds and runs on **macOS, Windows, and Linux**.  
+File paths in parsers use `dirs::home_dir()`, so they resolve automatically on each platform (e.g. `~/.opencode/` on macOS → `C:\Users\<you>\.opencode\` on Windows).
+
+> ⚠️ Some provider data locations may differ on Windows. Parsers are tested primarily on macOS.
 
 ## Installation
 
@@ -46,10 +54,15 @@ npm run tauri build
 ```
 
 Artifacts are generated in `src-tauri/target/release/bundle/`:
-- **macOS App:** `macos/tokscale-monitor.app`
-- **macOS DMG:** `dmg/tokscale-monitor_0.1.0_aarch64.dmg`
 
-### Install the .app
+| Platform | Artifact | Path |
+|----------|----------|------|
+| macOS | `.app` | `macos/tokscale-monitor.app` |
+| macOS | `.dmg` | `dmg/tokscale-monitor_0.1.0_aarch64.dmg` |
+| Windows | `.exe` | `nsis/tokscale-monitor_0.1.0_x64-setup.exe` |
+| Windows | `.msi` | `msi/tokscale-monitor_0.1.0_x64_en-US.msi` |
+
+### Install on macOS
 
 ```bash
 # Copy to Applications
@@ -59,14 +72,21 @@ cp -R "src-tauri/target/release/bundle/macos/tokscale-monitor.app" /Applications
 open /Applications/tokscale-monitor.app
 ```
 
-### Auto-start on login (macOS)
-
+**Auto-start on login:**
 ```bash
-# Add to login items
 osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/tokscale-monitor.app", hidden:false}'
 ```
-
 Or manually: **System Settings → Users & Groups → Login Items → +**
+
+### Install on Windows
+
+1. Run the `.msi` or `.exe` installer from the `bundle/` directory
+2. The app installs to `%LocalAppData%\tokscale-monitor\`
+3. A Start Menu shortcut is created automatically
+
+**Auto-start on login:**
+- Press `Win + R`, type `shell:startup`, press Enter
+- Copy a shortcut of `tokscale-monitor.exe` into that folder
 
 ## Development
 

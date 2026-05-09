@@ -31,6 +31,43 @@ A desktop app (built with Tauri + SvelteKit) that monitors token usage and estim
 - **Backend:** Rust (Tauri), rusqlite
 - **Build:** Vite
 
+## Installation
+
+Download the latest release or build from source.
+
+### Build from source
+
+```bash
+# Install dependencies
+npm install
+
+# Build for production
+npm run tauri build
+```
+
+Artifacts are generated in `src-tauri/target/release/bundle/`:
+- **macOS App:** `macos/tokscale-monitor.app`
+- **macOS DMG:** `dmg/tokscale-monitor_0.1.0_aarch64.dmg`
+
+### Install the .app
+
+```bash
+# Copy to Applications
+cp -R "src-tauri/target/release/bundle/macos/tokscale-monitor.app" /Applications/
+
+# Launch
+open /Applications/tokscale-monitor.app
+```
+
+### Auto-start on login (macOS)
+
+```bash
+# Add to login items
+osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/tokscale-monitor.app", hidden:false}'
+```
+
+Or manually: **System Settings → Users & Groups → Login Items → +**
+
 ## Development
 
 ```bash
@@ -39,9 +76,6 @@ npm install
 
 # Run in dev mode (starts Vite + Tauri)
 npm run tauri dev
-
-# Build for production
-npm run tauri build
 ```
 
 ## License

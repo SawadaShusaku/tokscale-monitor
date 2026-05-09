@@ -8,4 +8,11 @@ node_modules
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Dev workflow metadata
+.codex/
+.opencode/
+
+# Jujutsu
+.jj/
 .jj/
